@@ -1,5 +1,6 @@
 import React from "react";
 import { fetchData } from "./util/fetchData";
+import { TextInputField } from "./components/interaction/TextInputField";
 
 interface TickerSearchData {
   bestMatches: {
@@ -33,19 +34,17 @@ const App = () => {
 
   return (
     <>
-      <div>Fetch data:</div>
-      <label htmlFor="ticker-search" />
-      <input
+      <TextInputField
         id="ticker-search"
-        type="text"
+        placeholder="Ticker search"
         onChange={(e) =>
           e.target.value.length >= 3 && sendSearchDebounced(e.target.value)
         }
       />
       {tickerData?.bestMatches !== undefined &&
         tickerData.bestMatches.length > 0 &&
-        tickerData.bestMatches.map((dataObj) => (
-          <p>{`${dataObj["1. symbol"]} - ${dataObj["2. name"]}`}</p>
+        tickerData.bestMatches.map((dataObj, idx) => (
+          <p key={idx}>{`${dataObj["1. symbol"]} - ${dataObj["2. name"]}`}</p>
         ))}
     </>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import { MarketTrends } from "../../../types/realTimeFinanceData";
 import { fetchData } from "../../../util/fetchData";
 import * as Styled from "./MarketTrendsOverview.style";
+import { determineFontColor } from "../../../util/determineFontColor";
 
 interface MarketTrendsOverviewProps {
   heading: string;
@@ -28,10 +29,46 @@ export const MarketTrendsOverview: React.FC<MarketTrendsOverviewProps> = ({
         {heading}
       </Styled.FetchDataBtn>
       {marketTrendsDataNews !== undefined &&
-        marketTrendsDataNews.status === "OK" &&
-        marketTrendsDataNews.data.trends.map((trend, idx) => (
-          <div key={idx}>{trend.name}</div>
-        ))}
+        marketTrendsDataNews.status === "OK" && (
+          <Styled.CardList>
+            {marketTrendsDataNews.data.trends.map((trend, idx) => (
+              <Styled.Card key={idx}>
+                <Styled.CardHeading>{trend.name}</Styled.CardHeading>
+                <Styled.Seperator />
+                <Styled.CardBody>
+                  <Styled.ContentRow>
+                    <Styled.Text isTextBold>price:</Styled.Text>
+                    <Styled.Text>{trend.price}</Styled.Text>
+                  </Styled.ContentRow>
+
+                  <Styled.ContentRow>
+                    <Styled.Text isTextBold>previous close:</Styled.Text>
+                    <Styled.Text>{trend.previous_close}</Styled.Text>
+                  </Styled.ContentRow>
+
+                  <Styled.ContentRow>
+                    <Styled.Text isTextBold>change:</Styled.Text>
+                    <Styled.Text>{trend.change}</Styled.Text>
+                  </Styled.ContentRow>
+
+                  <Styled.ContentRow>
+                    <Styled.Text isTextBold>change percent:</Styled.Text>
+                    <Styled.Text
+                      color={determineFontColor(trend.change_percent)}
+                    >
+                      {trend.change_percent}
+                    </Styled.Text>
+                  </Styled.ContentRow>
+
+                  <Styled.ContentRow>
+                    <Styled.Text isTextBold>last update:</Styled.Text>
+                    <Styled.Text>{trend.last_update_utc}</Styled.Text>
+                  </Styled.ContentRow>
+                </Styled.CardBody>
+              </Styled.Card>
+            ))}
+          </Styled.CardList>
+        )}
     </>
   );
 };

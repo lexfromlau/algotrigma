@@ -27,7 +27,7 @@ type NewsData = {
   source: string;
   post_time_utc: string;
   stocks_in_news: StockData[];
-}[];
+};
 
 export interface MarketTrends {
   status: string;

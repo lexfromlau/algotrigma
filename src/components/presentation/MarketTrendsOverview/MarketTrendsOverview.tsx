@@ -1,7 +1,7 @@
 import React from "react";
 import { MarketTrends } from "../../../types/realTimeFinanceData";
 import { fetchData } from "../../../util/fetchData";
-import * as Styled from "./MarketTrendsOverview.style";
+import * as Styled from "../../../App.style";
 import { determineFontColor } from "../../../util/determineFontColor";
 
 interface MarketTrendsOverviewProps {

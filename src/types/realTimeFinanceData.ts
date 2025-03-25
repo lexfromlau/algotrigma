@@ -89,3 +89,32 @@ export interface CompanyOverviewResponse {
     google_mid: string;
   };
 }
+
+export interface StockTimeSeriesProps {
+  status: string;
+  request_id: string;
+  data: {
+    symbol: string;
+    type: string;
+    price: number;
+    previous_close: number;
+    change: number;
+    change_percent: number;
+    pre_or_post_market: number;
+    pre_or_post_market_change: number;
+    pre_or_post_market_change_percent: number;
+    last_update_utc: string;
+    time_series: {
+      [key: string]: {
+        price: number;
+        change: number;
+        change_percent: number;
+        volume: number;
+      };
+    };
+    key_events: [];
+    utc_offset_sec: number;
+    interval_sec: number;
+    period: string;
+  };
+}

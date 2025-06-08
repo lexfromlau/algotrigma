@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Widget from "./components/Widget/Widget";
 
 export const AppContainer = styled.div`
   padding: 13px;
@@ -69,4 +70,8 @@ export const Text = styled.span<TextProps>`
   font-size: 14px;
   font-weight: ${({ isTextBold }) => (isTextBold ? "bold" : "regular")};
   color: ${({ color }) => (color ? color : "black")};
+`;
+
+export const AdvancedChart = styled(Widget)`
+  height: 80vh;
 `;

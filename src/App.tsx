@@ -1,4 +1,5 @@
 import * as Styled from "./App.style";
+import { TimePicker } from "./components/interaction/DateTimePicker/partials/TimePicker";
 
 const App = () => {
   const advancedChartData = `{
@@ -24,6 +25,7 @@ const App = () => {
         endpoint={"embed-widget-advanced-chart.js"}
         data={advancedChartData}
       />
+      <TimePicker />
     </Styled.AppContainer>
   );
 };

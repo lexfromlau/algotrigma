@@ -4,6 +4,9 @@ This project leverages historical financial data to generate price forecasts and
 
 ## Features
 
+-> GARCH
+-> ARIMA
+
 ### Data Consumption:
 
 Integrates with financial data providers to fetch historical data for different financial assets.
